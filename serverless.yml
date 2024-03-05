@@ -13,8 +13,8 @@
 
 service: readable
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: readable
+org: dustproof
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -24,7 +24,7 @@ provider:
   name: aws
   runtime: nodejs18.x
 
-  # profile:
+  profile: personal
 
 # you can overwrite defaults here
 #  stage: dev
@@ -65,13 +65,11 @@ functions:
     handler: handler.hello
   read:
     handler: handler.read
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - httpApi:
-#          path: /users/create
-#          method: get
+    events:
+      - httpApi:
+          path: /read
+          method: get
+          # cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
